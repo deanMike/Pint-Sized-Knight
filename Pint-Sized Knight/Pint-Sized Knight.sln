@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pint-Sized Knight.CSharp.Plugins", "Pint-Sized Knight.CSharp.Plugins.csproj", "{CAF6DA7A-38EA-62D5-2621-0D5AD0186325}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pint-Sized Knight.CSharp", "Pint-Sized Knight.CSharp.csproj", "{8B6F9DCE-CADC-4332-70D8-01A47CDEF5B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pint-Sized Knight.CSharp.Editor", "Pint-Sized Knight.CSharp.Editor.csproj", "{8ED16EC3-28E9-56DD-B14B-BE12B35DFBE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAF6DA7A-38EA-62D5-2621-0D5AD0186325}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF6DA7A-38EA-62D5-2621-0D5AD0186325}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF6DA7A-38EA-62D5-2621-0D5AD0186325}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF6DA7A-38EA-62D5-2621-0D5AD0186325}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B6F9DCE-CADC-4332-70D8-01A47CDEF5B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B6F9DCE-CADC-4332-70D8-01A47CDEF5B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B6F9DCE-CADC-4332-70D8-01A47CDEF5B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B6F9DCE-CADC-4332-70D8-01A47CDEF5B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ED16EC3-28E9-56DD-B14B-BE12B35DFBE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ED16EC3-28E9-56DD-B14B-BE12B35DFBE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ED16EC3-28E9-56DD-B14B-BE12B35DFBE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ED16EC3-28E9-56DD-B14B-BE12B35DFBE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
