@@ -55,23 +55,34 @@ namespace UnityStandardAssets._2D
 
 
             //only control the player if grounded or airControl is turned on
+            if (move != 0 || moveUp != 0)
+            {
+                m_Anim.Play("walk");
+            } else
+            {
+                m_Anim.Stop();
+            }
 
+            // Move the character
+            m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, moveUp * m_MaxSpeed);
 
-                // Move the character
-                m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, moveUp * m_MaxSpeed);
-
-                // If the input is moving the player right and the player is facing left...
-                if (move > 0 && !m_FacingRight)
-                {
-                    // ... flip the player.
-                    Flip();
-                }
-                // Otherwise if the input is moving the player left and the player is facing right...
-                else if (move < 0 && m_FacingRight)
-                {
-                    // ... flip the player.
-                    Flip();
-                }
+            // If the input is moving the player right and the player is facing left...
+            if (move > 0 && !m_FacingRight)
+            {
+            // ... flip the player.
+                Flip();
+            }
+            // Otherwise if the input is moving the player left and the player is facing right...
+            else if (move < 0 && m_FacingRight)
+            {
+            // ... flip the player.
+                Flip();
+            }
+            else
+            {
+               // m_Anim.Stop();
+            }
+                
         }
 
         private void Flip()
