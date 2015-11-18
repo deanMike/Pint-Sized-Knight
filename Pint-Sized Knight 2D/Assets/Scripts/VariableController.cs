@@ -10,14 +10,18 @@ public class VariableController : MonoBehaviour {
     public float[] volume;          // Array of volume values.
     public float monstersOnScreen;  // Maximum number of monsters on screen.
     //Audio Related Variables
-    public int[] charAttackSounds;
-    public int[] defendsounds;
-    public int[] charDamageSounds;
-    public int[] enemyAttackSounds;
-    public int[] enemyDamageSounds;
-    public int[] enemyRoars;
-    public int[] lionRoars;
     public bool attack;
     public bool defend;
 
+    public void Update()
+    {
+        if (Input.GetKey(KeyCode.RightAlt) || Input.GetKey(KeyCode.RightControl))
+        {
+            attack = true;
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            defend = true;
+        }
+    }
 }

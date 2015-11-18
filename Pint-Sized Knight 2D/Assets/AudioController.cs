@@ -23,11 +23,22 @@ public class AudioController : MonoBehaviour {
         sound.clip = sounds[new System.Random().Next(1, 4)];
         if (!sound.isPlaying)
             sound.Play();
+        Invoke("attackFalse", sound.clip.length);
+        
     }
     public void playDefendSound()
     {
         sound.clip = sounds[0];
         if (!sound.isPlaying)
             sound.Play();
+        Invoke("defendFalse", sound.clip.length);
+    }
+    private void attackFalse()
+    {
+        variables.attack = false;
+    }
+    private void defendFalse()
+    {
+        variables.defend = false;
     }
 }
