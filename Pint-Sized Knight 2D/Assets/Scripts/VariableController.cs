@@ -9,5 +9,15 @@ public class VariableController : MonoBehaviour {
     public float monsterSpeed;      // Minimum monster movement speed.
     public float[] volume;          // Array of volume values.
     public float monstersOnScreen;  // Maximum number of monsters on screen.
+    //Audio Related Variables
+    public int[] charAttackSounds;
+    public int[] defendsounds;
+    public int[] charDamageSounds;
+    public int[] enemyAttackSounds;
+    public int[] enemyDamageSounds;
+    public int[] enemyRoars;
+    public int[] lionRoars;
+    public bool attack;
+    public bool defend;
 
 }
