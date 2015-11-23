@@ -1,5 +1,6 @@
 using System;
-using UnityEngine; 
+using System.Collections;
+using UnityEngine;
 
 namespace UnityStandardAssets._2D
 {
@@ -56,14 +57,18 @@ namespace UnityStandardAssets._2D
 
 
             //only control the player if grounded or airControl is turned on
-            if (move != 0 || moveUp != 0)
+            if (!(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightAlt)))
             {
-                m_Anim.Play("walk");
-            } else
-            {
-                m_Anim.Stop();
-            }
 
+                if (move != 0 || moveUp != 0)
+                {
+                    m_Anim.Play("Walk");
+                }
+                else
+                {
+                    m_Anim.Play("Idle");
+                }
+            }
             // Move the character
             m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, moveUp * m_MaxSpeed);
 
@@ -85,14 +90,26 @@ namespace UnityStandardAssets._2D
             }
                 
         }
-
+        private IEnumerator WaitForAnimation(Animation animation)
+        {
+            do
+            {
+                yield return null;
+            } while (animation.isPlaying);
+        }
         public void Attack()
         {
-           
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+            }
         }
         public void Defend()
         {
-
+            if (Input.GetKeyDown(KeyCode.RightAlt))
+            {
+                m_Anim.Play("Defend");
+                StartCoroutine(WaitForAnimation(m_Anim.GetComponent<Animation>()));
+            }
         }
 
         private void Flip()

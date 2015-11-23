@@ -33,10 +33,11 @@ namespace UnityStandardAssets._2D
             bool crouch = Input.GetKey(KeyCode.LeftControl);
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             float v = CrossPlatformInputManager.GetAxis("Vertical");
-            Debug.Log(v);
             // Pass all parameters to the character control script.
             m_Character.Move(h, v);
             m_Jump = false;
+            m_Character.Attack();
+            m_Character.Defend();
         }
     }
 }
