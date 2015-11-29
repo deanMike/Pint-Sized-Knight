@@ -15,12 +15,9 @@ public class AttackDefend : MonoBehaviour {
     {
         attackTrigger = GameObject.Find("AttackTrigger").GetComponent<Collider2D>();
         attackTrigger.enabled = false;
+        attacking = false;
     }
 
-	// Use this for initialization
-	void Start () {
-	    
-	}
 	
 	// Update is called once per frame
 	void Update () {

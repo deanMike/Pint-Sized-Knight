@@ -57,15 +57,19 @@ namespace UnityStandardAssets._2D
 
 
             //only control the player if grounded or airControl is turned on
-            if (!(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightAlt)))
+            if (!(m_Anim.GetBool("defend")))
             {
 
-                if (move != 0 || moveUp != 0)
+                if (move > 0)
                 {
-                    m_Anim.Play("Walk");
-                }
-                else
-                {
+                    m_Anim.Play("WalkRight");
+                } else if (move < 0) {
+                    m_Anim.Play("WalkLeft");
+                } else if (moveUp > 0) {
+                    m_Anim.Play("WalkUp");
+                } else if (moveUp < 0) {
+                    m_Anim.Play("WalkDown");
+                } else {
                     m_Anim.Play("Idle");
                 }
             }
@@ -76,13 +80,13 @@ namespace UnityStandardAssets._2D
             if (move > 0 && !m_FacingRight)
             {
             // ... flip the player.
-                Flip();
+             //  Flip();
             }
             // Otherwise if the input is moving the player left and the player is facing right...
             else if (move < 0 && m_FacingRight)
             {
             // ... flip the player.
-                Flip();
+             //  Flip();
             }
             else
             {
@@ -101,14 +105,16 @@ namespace UnityStandardAssets._2D
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                m_Anim.Play("Attack");
             }
         }
         public void Defend()
         {
-            if (Input.GetKeyDown(KeyCode.RightAlt))
+            if (Input.GetKey(KeyCode.RightAlt))
             {
-                m_Anim.Play("Defend");
-                StartCoroutine(WaitForAnimation(m_Anim.GetComponent<Animation>()));
+                m_Anim.SetBool("defend", true);
+            } else {
+                m_Anim.SetBool("defend", false);
             }
         }
 

@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: c2a38317afa40974f8a715c55fc42e40
-timeCreated: 1448282473
+guid: a0b4a89122db2f0439fb73a576d100c5
+timeCreated: 1448821112
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: idle_0
-    21300002: idle_1
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -32,7 +30,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: 16
+    aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -51,27 +49,7 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: idle_0
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 103
-        width: 343
-        height: 680
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: idle_1
-      rect:
-        serializedVersion: 2
-        x: 497
-        y: 103
-        width: 343
-        height: 668
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

@@ -1,11 +1,13 @@
 fileFormatVersion: 2
-guid: c2a38317afa40974f8a715c55fc42e40
-timeCreated: 1448282473
+guid: 894b4611b34ef45449f2d72368c68157
+timeCreated: 1448822786
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: idle_0
-    21300002: idle_1
+    21300000: walkUp_0
+    21300002: walkUp_1
+    21300004: walkUp_2
+    21300006: walkUp_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -40,7 +42,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,23 +54,43 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: idle_0
+    - name: walkUp_0
       rect:
         serializedVersion: 2
-        x: 112
-        y: 103
-        width: 343
-        height: 680
+        x: 160
+        y: 179
+        width: 315
+        height: 692
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: idle_1
+    - name: walkUp_1
       rect:
         serializedVersion: 2
-        x: 497
-        y: 103
-        width: 343
-        height: 668
+        x: 721
+        y: 181
+        width: 331
+        height: 688
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkUp_2
+      rect:
+        serializedVersion: 2
+        x: 1268
+        y: 176
+        width: 324
+        height: 699
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkUp_3
+      rect:
+        serializedVersion: 2
+        x: 1846
+        y: 176
+        width: 319
+        height: 697
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
