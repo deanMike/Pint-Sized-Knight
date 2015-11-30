@@ -10,9 +10,12 @@ public class AttackDefend : MonoBehaviour {
 
     private Collider2D attackTrigger;
 
+    public VariableController variables;
+
 
     void Awake()
     {
+        variables = GameObject.Find("Variables").GetComponent<VariableController>();
         attackTrigger = GameObject.Find("AttackTrigger").GetComponent<Collider2D>();
         attackTrigger.enabled = false;
         attacking = false;
@@ -21,24 +24,27 @@ public class AttackDefend : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetKeyDown(KeyCode.Space) && !attacking)
-        {
+        Attack();
+    }
+
+    public void Attack() {
+        if (variables.attack && !attacking) {
             attacking = true;
             attackTimer = attackEnd;
 
             attackTrigger.enabled = true;
         }
-
-        if (attacking)
-        {
-            if(attackTimer > 0)
-            {
+        
+        if (attacking) {
+            if (attackTimer > 0) {
                 attackTimer -= Time.deltaTime;
-            } else
-            {
+            } else {
                 attacking = false;
                 attackTrigger.enabled = false;
+                variables.attack = false;
             }
         }
     }
+    public void Damage() {
+    } 
 }

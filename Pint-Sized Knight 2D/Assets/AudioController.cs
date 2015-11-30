@@ -4,10 +4,9 @@ using System.Collections;
 public class AudioController : MonoBehaviour {
     public AudioClip[] sounds;
     private AudioSource sound;
-    private VariableController variables;
+    public VariableController variables;
 	// Use this for initialization
 	void Start () {
-        variables = GameObject.Find("Variables").GetComponent<VariableController>();
         sound = gameObject.GetComponent<AudioSource>();
 	}
 	

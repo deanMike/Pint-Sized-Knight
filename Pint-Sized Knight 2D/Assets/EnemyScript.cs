@@ -21,8 +21,9 @@ public class EnemyScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!(Mathf.Abs(transform.position.x - character.transform.position.x) <= 1 && Mathf.Abs(transform.position.y - character.transform.position.y) <= 1.5f))
+        if (!(Mathf.Abs(transform.position.x - character.transform.position.x) <= 1 && Mathf.Abs(transform.position.y - character.transform.position.y) <= 1.5f)) {
             transform.position = Vector2.MoveTowards(gameObject.transform.position, character.transform.position, speed * Time.deltaTime);
+        }
         if(currHealth <= 0)
         {
             Destroy(gameObject);
