@@ -56,18 +56,18 @@ public class PlatformerCharacter2D : MonoBehaviour {
 
 
         //only control the player if grounded or airControl is turned on
-        if (!(m_Anim.GetBool("defend"))) {
+        if (!(m_Anim.GetBool("defend") || m_Anim.GetBool("attack"))) {
             if (move != 0) {
-                m_Anim.Play("WalkRight");
+              //  m_Anim.Play("WalkRight");
             } //else if (move < 0) {
                // m_Anim.Play("WalkLeft");
             //} 
               else if (moveUp > 0) {
-                m_Anim.Play("WalkUp");
+              //  m_Anim.Play("WalkUp");
             } else if (moveUp < 0) {
-                m_Anim.Play("WalkDown");
+              //  m_Anim.Play("WalkDown");
             }
-            m_Anim.SetFloat("move", move + moveUp);
+            m_Anim.SetFloat("move", Mathf.Abs(move + moveUp));
         }
         // Move the character
         m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, moveUp * m_MaxSpeed);
