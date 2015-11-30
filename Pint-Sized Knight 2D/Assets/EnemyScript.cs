@@ -11,8 +11,11 @@ public class EnemyScript : MonoBehaviour {
     public Color orig;
     public Color flash;
 
+    private Vector3 origPos;
+
 	// Use this for initialization
 	void Start () {
+        origPos = GetComponent<Transform>().position;
         character = GameObject.Find("Character");
         speed = 2;
         currHealth = maxHealth;
@@ -26,9 +29,12 @@ public class EnemyScript : MonoBehaviour {
         }
         if(currHealth <= 0)
         {
-            Destroy(gameObject);
+            transform.position = origPos;
+            currHealth = maxHealth;
+            gameObject.GetComponent<Renderer>().material.color = orig;
+            //Destroy(gameObject);
         }
-	}
+    }
 
     void Damage(int damage)
     {
