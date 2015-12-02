@@ -17,6 +17,11 @@ public class AttackDefend : MonoBehaviour {
     {
         variables = GameObject.Find("Variables").GetComponent<VariableController>();
         attackTrigger = GameObject.Find("AttackTrigger").GetComponent<Collider2D>();
+        Debug.Log(GameObject.Find("AttackTrigger").GetComponent<Collider2D>() != null);
+
+    }
+
+    void Start() {
         attackTrigger.enabled = false;
         attacking = false;
     }

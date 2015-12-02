@@ -56,7 +56,7 @@ public class PlatformerCharacter2D : MonoBehaviour {
 
 
         //only control the player if grounded or airControl is turned on
-        if (!(m_Anim.GetBool("defend"))) {
+        if (!(m_Anim.GetBool("defend")) && !(m_Anim.GetBool("attack"))) {
             if (move != 0) {
                 m_Anim.Play("WalkRight");
             } //else if (move < 0) {

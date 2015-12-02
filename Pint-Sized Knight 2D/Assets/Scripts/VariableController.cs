@@ -13,6 +13,10 @@ public class VariableController : MonoBehaviour {
     public bool attack;
     public bool defend;
 
+    public void Awake() {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void Update() {
         if (Input.GetKey(KeyCode.RightAlt) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.RightApple) || Input.GetKey(KeyCode.RightCommand) ||
             Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftApple) || Input.GetKey(KeyCode.LeftCommand)) {

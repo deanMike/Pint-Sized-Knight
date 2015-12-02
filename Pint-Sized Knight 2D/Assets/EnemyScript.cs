@@ -13,41 +13,59 @@ public class EnemyScript : MonoBehaviour {
 
     private Vector3 origPos;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         origPos = GetComponent<Transform>().position;
         character = GameObject.Find("Character");
         speed = 2;
         currHealth = maxHealth;
         timeFlash = 0;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update() {
         if (!(Mathf.Abs(transform.position.x - character.transform.position.x) <= 1 && Mathf.Abs(transform.position.y - character.transform.position.y) <= 1.5f)) {
             transform.position = Vector2.MoveTowards(gameObject.transform.position, character.transform.position, speed * Time.deltaTime);
         }
-        if(currHealth <= 0)
-        {
-            transform.position = origPos;
+        if (currHealth <= 0) {
+            Explode();
+            //transform.position = origPos;
             currHealth = maxHealth;
             gameObject.GetComponent<Renderer>().material.color = orig;
-            //Destroy(gameObject);
+            Invoke("DestroyEnemy", 0.5f);
         }
     }
 
-    void Damage(int damage)
-    {
+    void Damage(int damage) {
         currHealth -= damage;
         StartCoroutine(FlashColor());
         Debug.Log(gameObject.GetComponent<Renderer>().material.color);
         gameObject.GetComponent<Renderer>().material.color = flash;
     }
-    
+
     IEnumerator FlashColor() {
         Debug.Log(0);
         yield return new WaitForSeconds(0.2f);
         gameObject.GetComponent<Renderer>().material.color = orig;
         Debug.Log(0.5f);
+    }
+
+    private void Explode() {
+        float multiplier = 1;
+
+
+        var systems = GetComponentsInChildren<ParticleSystem>();
+
+        foreach (ParticleSystem system in systems) {
+            system.startSize *= multiplier;
+            system.startSpeed *= multiplier;
+            system.startLifetime *= Mathf.Lerp(multiplier, 1, 0.5f);
+            system.Clear();
+            system.Play();
+        }
+    }
+
+    private void DestroyEnemy() {
+        Destroy(gameObject);
     }
 }
