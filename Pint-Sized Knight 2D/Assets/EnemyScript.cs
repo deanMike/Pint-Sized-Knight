@@ -11,7 +11,6 @@ public class EnemyScript : MonoBehaviour {
     public Color orig;
     public Color flash;
 
-
     private Vector3 origPos;
 
     // Use this for initialization
