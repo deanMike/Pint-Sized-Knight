@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if ((GameObject.FindGameObjectsWithTag("Enemy").Length == 0) || Input.GetKeyDown(KeyCode.End) && Application.loadedLevel == 1) {
+        if ((GameObject.FindGameObjectsWithTag("Enemy").Length == 0 || Input.GetKeyDown(KeyCode.End)) && Application.loadedLevel == 1) {
             Application.LoadLevel(2);
         }
         if (Application.loadedLevel == 2) {

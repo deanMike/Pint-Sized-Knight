@@ -11,7 +11,7 @@ public class Platformer2DUserControl : MonoBehaviour {
     private void Awake() {
         m_Character = GetComponent<PlatformerCharacter2D>();
         variables = GameObject.Find("Variables").GetComponent<VariableController>();
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
 
