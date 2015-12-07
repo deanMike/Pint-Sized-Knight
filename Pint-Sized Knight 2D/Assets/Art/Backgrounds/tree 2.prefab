@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 446192}
   - 212: {fileID: 21210356}
   - 60: {fileID: 6056404}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: tree 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,9 +23,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179626}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.4177074, y: 4.6364193, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 1.15202326e-07, y: -.707106709, z: .707106829, w: -1.15202312e-07}
+  m_LocalPosition: {x: 3.55999994, y: .119999997, z: 2.5}
+  m_LocalScale: {x: .212048396, y: .23892796, z: .212048307}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

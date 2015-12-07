@@ -8,6 +8,7 @@ public class AudioController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         sound = gameObject.GetComponent<AudioSource>();
+        variables = GameObject.Find("Variables").GetComponent<VariableController>();
 	}
 	
 	// Update is called once per frame

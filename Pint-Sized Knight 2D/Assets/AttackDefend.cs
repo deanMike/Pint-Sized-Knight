@@ -10,7 +10,9 @@ public class AttackDefend : MonoBehaviour {
 
     private Collider2D attackTrigger;
 
-    public VariableController variables;
+    private VariableController variables;
+
+    private Color orig;
 
 
     void Awake()
@@ -18,18 +20,24 @@ public class AttackDefend : MonoBehaviour {
         variables = GameObject.Find("Variables").GetComponent<VariableController>();
         attackTrigger = GameObject.Find("AttackTrigger").GetComponent<Collider2D>();
         Debug.Log(GameObject.Find("AttackTrigger").GetComponent<Collider2D>() != null);
-
+        orig = GetComponent<SpriteRenderer>().color;
     }
 
     void Start() {
         attackTrigger.enabled = false;
         attacking = false;
+        variables.currHealth = variables.playerHealth;
     }
 
 	
 	// Update is called once per frame
 	void Update () {
         Attack();
+        //Reload current level if HP reaches 0.
+        if (variables.currHealth <= 0) {
+            variables.currHealth = variables.playerHealth;
+            Application.LoadLevel(Application.loadedLevelName);
+        }
     }
 
     public void Attack() {
@@ -50,6 +58,21 @@ public class AttackDefend : MonoBehaviour {
             }
         }
     }
-    public void Damage() {
-    } 
+    public void Damage(int dmg) {
+        if (variables.defend) {
+            dmg = 1;
+        }
+        StartCoroutine(FlashColor(Color.red, 0.2f));
+        variables.currHealth -= dmg;
+        Debug.Log("Health: " + variables.currHealth);
+
+    }
+
+    IEnumerator FlashColor(Color col, float wait) {
+        Debug.Log(0);
+        gameObject.GetComponent<Renderer>().material.color = col;
+        yield return new WaitForSeconds(wait);
+        gameObject.GetComponent<Renderer>().material.color = orig;
+        Debug.Log(0.5f);
+    }
 }

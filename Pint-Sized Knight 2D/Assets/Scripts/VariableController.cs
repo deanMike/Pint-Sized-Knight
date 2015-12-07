@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class VariableController : MonoBehaviour {
 
-    public float playerHealth;      // Player's starting health.
+    public int playerHealth;      // Player's starting health.
+    public int currHealth;
+
     public int numHitsKill;         // Number of hits required to kill the weakest monster.
     public float playerSpeed;       // Maximum player movement speed.
     public float monsterSpeed;      // Minimum monster movement speed.

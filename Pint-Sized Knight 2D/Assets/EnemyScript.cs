@@ -12,11 +12,22 @@ public class EnemyScript : MonoBehaviour {
     public Color flash;
 
     private Vector3 origPos;
+    private Collider2D enemyAttackTrigger;
+
+    private bool enemyAttacking;
+    private float enemyAttackTimer;
+    private float enemyAttackEnd = 0.1f;
+    private bool enemyAttack;
+    public bool test;
 
     // Use this for initialization
-    void Start() {
+    void Awake() {
         origPos = GetComponent<Transform>().position;
         character = GameObject.Find("Character");
+        enemyAttackTrigger = GetComponentsInChildren<Collider2D>()[1];
+    }
+    void Start() {
+        enemyAttackTrigger.enabled = false;
         speed = 2;
         currHealth = maxHealth;
         timeFlash = 0;
@@ -24,8 +35,11 @@ public class EnemyScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (!(Mathf.Abs(transform.position.x - character.transform.position.x) <= 1 && Mathf.Abs(transform.position.y - character.transform.position.y) <= 1.5f)) {
+        if (!(Mathf.Abs(transform.position.x - character.transform.position.x) <= 1.5f && Mathf.Abs(transform.position.y - character.transform.position.y) <= 2.0f)) {
             transform.position = Vector2.MoveTowards(gameObject.transform.position, character.transform.position, speed * Time.deltaTime);
+        } else {
+            Debug.Log("Attack!");
+            Invoke("EnemyAttack", 1.0f);
         }
         if (currHealth <= 0) {
             Explode();
@@ -38,14 +52,13 @@ public class EnemyScript : MonoBehaviour {
 
     void Damage(int damage) {
         currHealth -= damage;
-        StartCoroutine(FlashColor());
-        Debug.Log(gameObject.GetComponent<Renderer>().material.color);
-        gameObject.GetComponent<Renderer>().material.color = flash;
+        StartCoroutine(FlashColor(flash, 0.2f));
     }
 
-    IEnumerator FlashColor() {
+    IEnumerator FlashColor(Color col, float wait) {
         Debug.Log(0);
-        yield return new WaitForSeconds(0.2f);
+        gameObject.GetComponent<Renderer>().material.color = col;
+        yield return new WaitForSeconds(wait);
         gameObject.GetComponent<Renderer>().material.color = orig;
         Debug.Log(0.5f);
     }
@@ -67,5 +80,23 @@ public class EnemyScript : MonoBehaviour {
 
     private void DestroyEnemy() {
         Destroy(gameObject);
+    }
+
+    private void EnemyAttack() {
+        if (!enemyAttacking) {
+            enemyAttacking = true;
+            enemyAttackTimer = enemyAttackEnd;
+            StartCoroutine(FlashColor(Color.yellow, 0.2f));
+            enemyAttackTrigger.enabled = true;
+        }
+
+        if (enemyAttacking) {
+            if (enemyAttackTimer > 0) {
+                enemyAttackTimer -= Time.deltaTime;
+            } else {
+                enemyAttacking = false;
+                enemyAttackTrigger.enabled = false;
+            }
+        }
     }
 }

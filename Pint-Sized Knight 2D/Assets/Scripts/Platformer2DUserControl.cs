@@ -4,14 +4,14 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Platformer2DUserControl : MonoBehaviour {
 
-    private VariableController variables;
+    public VariableController variables;
 
     private PlatformerCharacter2D m_Character;
 
     private void Awake() {
         m_Character = GetComponent<PlatformerCharacter2D>();
         variables = GameObject.Find("Variables").GetComponent<VariableController>();
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
 
