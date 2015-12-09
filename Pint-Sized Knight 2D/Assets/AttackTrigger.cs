@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AttackTrigger : MonoBehaviour {
 
-    public int damage = 15;
+    public int damage = 5;
 	
     void OnTriggerEnter2D(Collider2D col)
     {

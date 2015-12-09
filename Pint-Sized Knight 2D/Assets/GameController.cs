@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
         if (variables.gameStart && instruct != null) {
             instruct.SetActive(true);
         }
-        Debug.Log(GameObject.FindGameObjectsWithTag("Enemy").Length);
+        
         if ((GameObject.FindGameObjectsWithTag("Enemy").Length == 0 || Input.GetKeyDown(KeyCode.End)) && Application.loadedLevel == 1) {
             Application.LoadLevel(2);
             Character.transform.position = new Vector2(-4.92f, 20.04f);

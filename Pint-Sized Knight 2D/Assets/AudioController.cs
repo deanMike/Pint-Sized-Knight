@@ -5,14 +5,16 @@ public class AudioController : MonoBehaviour {
     public AudioClip[] sounds;
     private AudioSource sound;
     public VariableController variables;
-	// Use this for initialization
-	void Start () {
+    private int count;
+    // Use this for initialization
+    void Start () {
         sound = gameObject.GetComponent<AudioSource>();
         variables = GameObject.Find("Variables").GetComponent<VariableController>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        count = GameObject.FindGameObjectsWithTag("Enemy").Length;
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (variables.attack)
             playAttackSound();
         if (variables.defend)
@@ -40,5 +42,13 @@ public class AudioController : MonoBehaviour {
     private void defendFalse()
     {
         variables.defend = false;
+    }
+    private void EnemyRoar() {
+        if (count > GameObject.FindGameObjectsWithTag("Enemy").Length) {
+            count--;
+            sound.clip = sounds[13];
+            sound.Play();
+        }
+
     }
 }

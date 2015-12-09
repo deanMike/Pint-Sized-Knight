@@ -9,6 +9,7 @@ public class Platformer2DUserControl : MonoBehaviour {
     private bool pose;
     private PlatformerCharacter2D m_Character;
 
+
     private void Awake() {
         m_Character = GetComponent<PlatformerCharacter2D>();
         variables = GameObject.Find("Variables").GetComponent<VariableController>();
@@ -16,8 +17,8 @@ public class Platformer2DUserControl : MonoBehaviour {
         pose = false;
     }
 
-
     private void Update() {
+
         if (variables.win || pose) {
             pose = true;
             gameObject.GetComponent<SpriteRenderer>().sprite = winner;

@@ -8,12 +8,15 @@ public class FenceScript : MonoBehaviour {
 
     public VariableController variables;
 
+    private AudioSource aSource;
+
     public float openTime;
     private bool open;
     // Use this for initialization
     void Start() {
         one.SetActive(false);
         two.SetActive(false);
+        aSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class FenceScript : MonoBehaviour {
         }
     }
     private void openGate() {
+        aSource.Play();
         if (!open) {
             Invoke("Three", 0.2f);
             Invoke("Two", 0.2f);

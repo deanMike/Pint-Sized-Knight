@@ -15,20 +15,28 @@ public class AttackDefend : MonoBehaviour {
 
     private Color orig;
 
+    public AudioClip[] sounds;
+    private AudioSource aSource;
+
+    private System.Random rand;
+
+
+
 
     void Awake()
     {
         variables = GameObject.Find("Variables").GetComponent<VariableController>();
         attackTrigger = GameObject.Find("AttackTrigger").GetComponent<Collider2D>();
-        Debug.Log(GameObject.Find("AttackTrigger").GetComponent<Collider2D>() != null);
         orig = GetComponent<SpriteRenderer>().color;
         playerCollider = GetComponent<Collider2D>();
+        aSource = GetComponent<AudioSource>();
     }
 
     void Start() {
         attackTrigger.enabled = false;
         attacking = false;
         variables.currHealth = variables.playerHealth;
+        rand = new System.Random();
     }
 
 	
@@ -58,6 +66,8 @@ public class AttackDefend : MonoBehaviour {
 
     public void Attack() {
         if (variables.attack && !attacking) {
+            aSource.clip = sounds[rand.Next(0, 6)];
+            aSource.Play();
             attacking = true;
             attackTimer = attackEnd;
 
@@ -76,8 +86,13 @@ public class AttackDefend : MonoBehaviour {
     }
     public void Damage(int dmg) {
         if (variables.defend) {
+            aSource.clip = sounds[12];
             dmg = 1;
+        } else {
+            aSource.clip = sounds[rand.Next(6, 12)];
+
         }
+        aSource.Play();
         StartCoroutine(FlashColor(Color.red, 0.2f));
         variables.currHealth -= dmg;
         Debug.Log("Health: " + variables.currHealth);
