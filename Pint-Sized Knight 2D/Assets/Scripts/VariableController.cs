@@ -12,19 +12,22 @@ public class VariableController : MonoBehaviour {
     public float[] volume;          // Array of volume values.
     public float monstersOnScreen;  // Maximum number of monsters on screen.
                                     //Audio Related Variables
+    public bool gameStart;
+
     public bool attack;
     public bool defend;
+
+    public bool win = false;
 
     public void Awake() {
         DontDestroyOnLoad(gameObject);
     }
 
     public void Update() {
-        if (Input.GetKey(KeyCode.RightAlt) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.RightApple) || Input.GetKey(KeyCode.RightCommand) ||
-            Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftApple) || Input.GetKey(KeyCode.LeftCommand)) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             attack = true;
         }
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
             defend = true;
         } else {
             defend = false;

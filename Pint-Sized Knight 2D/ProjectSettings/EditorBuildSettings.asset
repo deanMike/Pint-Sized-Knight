@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/HomeScreen.unity
   - enabled: 1
     path: Assets/Woods.unity
+  - enabled: 1
+    path: Assets/EndGame.unity

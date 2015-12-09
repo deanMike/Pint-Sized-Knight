@@ -4,6 +4,7 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
     public GameObject Enemy;
+    public GameObject Character;
     private GameObject PauseOverlay;
     private bool paused;
 
@@ -23,6 +24,13 @@ public class GameController : MonoBehaviour {
     void Update() {
         if ((GameObject.FindGameObjectsWithTag("Enemy").Length == 0 || Input.GetKeyDown(KeyCode.End)) && Application.loadedLevel == 1) {
             Application.LoadLevel(2);
+            Character.transform.position = new Vector2(-4.92f, 20.04f);
+
+        }
+        if ((GameObject.FindGameObjectsWithTag("Enemy").Length == 0 || Input.GetKeyDown(KeyCode.End)) && Application.loadedLevel == 2) {
+            Application.LoadLevel(3);
+            Character.transform.position = new Vector2(0.7892538f, -8.363836f);
+
         }
         if (Application.loadedLevel == 2) {
             SpawnEnemies();
@@ -34,7 +42,9 @@ public class GameController : MonoBehaviour {
 
     void SpawnEnemies() {
         while (GameObject.FindGameObjectsWithTag("Enemy").Length != maxEnemiesOnScreen && currTotalEnemies < maxTotalEnemies) {
-            Instantiate(Enemy, new Vector3(Random.Range(-25, 25), Random.Range(-25, 25)), new Quaternion());
+            Debug.Log("1 " + (GameObject.FindGameObjectsWithTag("Enemy").Length != maxEnemiesOnScreen));
+            Debug.Log("2 " + (currTotalEnemies < maxTotalEnemies));
+            Instantiate(Enemy, new Vector3(Random.Range(-10, 10), Random.Range(-20, 20)), new Quaternion());
             currEnemiesOnScreen++;
             currTotalEnemies++;
         }

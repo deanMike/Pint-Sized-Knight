@@ -6,9 +6,10 @@ public class AttackDefend : MonoBehaviour {
     private bool defending;
 
     private float attackTimer = 0;
-    private float attackEnd = 0.3f;
+    private float attackEnd = 1.0f;
 
     private Collider2D attackTrigger;
+    private Collider2D playerCollider;
 
     private VariableController variables;
 
@@ -21,6 +22,7 @@ public class AttackDefend : MonoBehaviour {
         attackTrigger = GameObject.Find("AttackTrigger").GetComponent<Collider2D>();
         Debug.Log(GameObject.Find("AttackTrigger").GetComponent<Collider2D>() != null);
         orig = GetComponent<SpriteRenderer>().color;
+        playerCollider = GetComponent<Collider2D>();
     }
 
     void Start() {
@@ -37,6 +39,20 @@ public class AttackDefend : MonoBehaviour {
         if (variables.currHealth <= 0) {
             variables.currHealth = variables.playerHealth;
             Application.LoadLevel(Application.loadedLevelName);
+            if (Application.loadedLevel == 2) {
+                transform.position = new Vector2(-4.92f, 20.04f);
+            }
+            if (Application.loadedLevel == 1) {
+                Destroy(gameObject);
+
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col) {
+        if (!col.isTrigger && col.CompareTag("Lion")) {
+            Debug.Log("Win!!");
+            variables.win = true;
         }
     }
 

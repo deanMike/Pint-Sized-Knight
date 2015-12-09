@@ -11,12 +11,14 @@ public class EnemyScript : MonoBehaviour {
     public Color orig;
     public Color flash;
 
+    public VariableController variables;
+
     private Vector3 origPos;
     private Collider2D enemyAttackTrigger;
 
     private bool enemyAttacking;
     private float enemyAttackTimer;
-    private float enemyAttackEnd = 0.1f;
+    private float enemyAttackEnd = 0.3f;
     private bool enemyAttack;
     public bool test;
 
@@ -31,15 +33,16 @@ public class EnemyScript : MonoBehaviour {
         speed = 2;
         currHealth = maxHealth;
         timeFlash = 0;
+        InvokeRepeating("EnemyAttack", 1.0f, Random.Range(1.0f, 5.0f));
     }
 
     // Update is called once per frame
     void Update() {
-        if (!(Mathf.Abs(transform.position.x - character.transform.position.x) <= 1.5f && Mathf.Abs(transform.position.y - character.transform.position.y) <= 2.0f)) {
+        if (variables.gameStart && !(Mathf.Abs(transform.position.x - character.transform.position.x) <= 1.5f && Mathf.Abs(transform.position.y - character.transform.position.y) <= 2.0f)) {
             transform.position = Vector2.MoveTowards(gameObject.transform.position, character.transform.position, speed * Time.deltaTime);
         } else {
             Debug.Log("Attack!");
-            Invoke("EnemyAttack", 1.0f);
+
         }
         if (currHealth <= 0) {
             Explode();
@@ -52,7 +55,13 @@ public class EnemyScript : MonoBehaviour {
 
     void Damage(int damage) {
         currHealth -= damage;
-        StartCoroutine(FlashColor(flash, 0.2f));
+        var systems = GetComponentsInChildren<ParticleSystem>();
+
+        foreach (ParticleSystem system in systems) {
+            system.startColor = Color.red;
+            system.Clear();
+
+        }
     }
 
     IEnumerator FlashColor(Color col, float wait) {
@@ -84,12 +93,24 @@ public class EnemyScript : MonoBehaviour {
 
     private void EnemyAttack() {
         if (!enemyAttacking) {
+            var systems = GetComponentsInChildren<ParticleSystem>();
+
+            foreach (ParticleSystem system in systems) {
+                system.startColor = Color.yellow;
+                system.Clear();
+                
+            }
             enemyAttacking = true;
             enemyAttackTimer = enemyAttackEnd;
             StartCoroutine(FlashColor(Color.yellow, 0.2f));
             enemyAttackTrigger.enabled = true;
-        }
+            Invoke("EnemyAttackEnd", 0.1f);
+            foreach (ParticleSystem system in systems) {
+                system.startColor = Color.white;
+                system.Clear();
 
+            }
+        }
         if (enemyAttacking) {
             if (enemyAttackTimer > 0) {
                 enemyAttackTimer -= Time.deltaTime;
@@ -98,5 +119,9 @@ public class EnemyScript : MonoBehaviour {
                 enemyAttackTrigger.enabled = false;
             }
         }
+    }
+    private void EnemyAttackEnd() {
+        enemyAttackTrigger.enabled = false;
+        enemyAttacking = false;
     }
 }
