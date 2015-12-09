@@ -13,15 +13,28 @@ public class GameController : MonoBehaviour {
     private int currEnemiesOnScreen;
     private int currTotalEnemies;
 
+    public GameObject panel;
+
+    public GameObject instruct;
+
+    private VariableController variables;
+
     // Use this for initialization
     void Awake() {
         DontDestroyOnLoad(gameObject);
         PauseOverlay = GameObject.Find("Pause");
         PauseOverlay.SetActive(false);
     }
+    void Start() {
+        variables = GameObject.Find("Variables").GetComponent<VariableController>();
+    }
 
     // Update is called once per frame
     void Update() {
+        if (variables.gameStart && instruct != null) {
+            instruct.SetActive(true);
+        }
+        Debug.Log(GameObject.FindGameObjectsWithTag("Enemy").Length);
         if ((GameObject.FindGameObjectsWithTag("Enemy").Length == 0 || Input.GetKeyDown(KeyCode.End)) && Application.loadedLevel == 1) {
             Application.LoadLevel(2);
             Character.transform.position = new Vector2(-4.92f, 20.04f);
@@ -37,6 +50,12 @@ public class GameController : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Pause();
+        }
+        if (Application.loadedLevel != 1) {
+            variables.gameStart = true;
+        }
+        if (variables.win) {
+            panel.SetActive(true);
         }
     }
 

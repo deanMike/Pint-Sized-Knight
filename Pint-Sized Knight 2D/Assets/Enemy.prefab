@@ -138,7 +138,6 @@ GameObject:
   - 4: {fileID: 432672}
   - 199: {fileID: 19945176}
   - 198: {fileID: 19844196}
-  - 114: {fileID: 11400406}
   m_Layer: 0
   m_Name: Glow
   m_TagString: Untagged
@@ -156,7 +155,6 @@ GameObject:
   - 4: {fileID: 443988}
   - 199: {fileID: 19905870}
   - 198: {fileID: 19858492}
-  - 114: {fileID: 11415294}
   m_Layer: 0
   m_Name: Glow
   m_TagString: Untagged
@@ -563,28 +561,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.56115532
---- !u!114 &11400406
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11415294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11423110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -599,7 +575,7 @@ MonoBehaviour:
   maxHealth: 30
   orig: {r: 1, g: 1, b: 1, a: 0}
   flash: {r: 1, g: 0, b: 0, a: 0}
-  variables: {fileID: 11429660, guid: 6157df417dea6fc4b9095fefbb974780, type: 2}
+  variables: {fileID: 0}
   test: 0
 --- !u!114 &11467954
 MonoBehaviour:
@@ -15453,6 +15429,10 @@ Prefab:
       value: 
       objectReference: {fileID: 11429660, guid: 6157df417dea6fc4b9095fefbb974780,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 104894, guid: d2491339c36c7be43ab97374fae1b6be, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 105854}

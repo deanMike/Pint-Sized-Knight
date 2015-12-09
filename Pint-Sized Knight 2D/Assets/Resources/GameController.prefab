@@ -69,8 +69,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 105854, guid: e3a4a355005ce034ca51d1aa35f772e3, type: 2}
+  Character: {fileID: 0}
   maxTotalEnemies: 10
   maxEnemiesOnScreen: 2
+  variables: {fileID: 0}
 --- !u!114 &11489888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,20 +85,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 100
+  currHealth: 0
   numHitsKill: 0
   playerSpeed: 0
   monsterSpeed: 0
   volume: []
   monstersOnScreen: 0
+  gameStart: 0
   attack: 0
   defend: 0
+  win: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: Character
+      value: 
+      objectReference: {fileID: 104894, guid: d2491339c36c7be43ab97374fae1b6be, type: 2}
+    - target: {fileID: 0}
+      propertyPath: variables
+      value: 
+      objectReference: {fileID: 11429660, guid: 6157df417dea6fc4b9095fefbb974780,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 103794}

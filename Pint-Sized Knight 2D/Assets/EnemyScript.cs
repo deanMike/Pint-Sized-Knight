@@ -11,7 +11,7 @@ public class EnemyScript : MonoBehaviour {
     public Color orig;
     public Color flash;
 
-    public VariableController variables;
+    private VariableController variables;
 
     private Vector3 origPos;
     private Collider2D enemyAttackTrigger;
@@ -25,10 +25,12 @@ public class EnemyScript : MonoBehaviour {
     // Use this for initialization
     void Awake() {
         origPos = GetComponent<Transform>().position;
-        character = GameObject.Find("Character");
         enemyAttackTrigger = GetComponentsInChildren<Collider2D>()[1];
+        
     }
     void Start() {
+        variables = GameObject.Find("Variables").GetComponent<VariableController>();
+        character = GameObject.Find("Character");
         enemyAttackTrigger.enabled = false;
         speed = 2;
         currHealth = maxHealth;
@@ -38,12 +40,10 @@ public class EnemyScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        Debug.Log(variables.gameStart);
         if (variables.gameStart && !(Mathf.Abs(transform.position.x - character.transform.position.x) <= 1.5f && Mathf.Abs(transform.position.y - character.transform.position.y) <= 2.0f)) {
             transform.position = Vector2.MoveTowards(gameObject.transform.position, character.transform.position, speed * Time.deltaTime);
-        } else {
-            Debug.Log("Attack!");
-
-        }
+        } 
         if (currHealth <= 0) {
             Explode();
             //transform.position = origPos;

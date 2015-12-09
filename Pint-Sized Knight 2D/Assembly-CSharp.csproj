@@ -49,13 +49,18 @@
      <Compile Include="Assets\AttackTrigger.cs" />
      <Compile Include="Assets\AudioController.cs" />
      <Compile Include="Assets\DefendTrigger.cs" />
+     <Compile Include="Assets\EnemyCounter.cs" />
      <Compile Include="Assets\EnemyScript.cs" />
      <Compile Include="Assets\EnemyTrigger.cs" />
      <Compile Include="Assets\EventSystem.cs" />
      <Compile Include="Assets\FenceScript.cs" />
      <Compile Include="Assets\GameController.cs" />
      <Compile Include="Assets\InstructionText.cs" />
+     <Compile Include="Assets\LionRoar.cs" />
      <Compile Include="Assets\LionScript.cs" />
+     <Compile Include="Assets\MusicScript.cs" />
+     <Compile Include="Assets\OverlayScript.cs" />
+     <Compile Include="Assets\PanelScript.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\ExplosionPhysicsForce.cs" />
      <Compile Include="Assets\Scripts\Monster.cs" />
@@ -65,6 +70,8 @@
      <Compile Include="Assets\Scripts\VariableController.cs" />
      <Compile Include="Assets\StartButton.cs" />
      <Compile Include="Assets\StartScreenAudio.cs" />
+     <Compile Include="Assets\TextScript.cs" />
+     <Compile Include="Assets\TransitionMusic.cs" />
      <Compile Include="Assets\UIScript.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
